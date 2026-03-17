@@ -13,6 +13,7 @@ const Index = () => {
   const [patients, setPatients] = useState<Patient[]>(() => generateMockPatients());
   const [formOpen, setFormOpen] = useState(false);
   const [selectedPatient, setSelectedPatient] = useState<Patient | null>(null);
+  const { user, logout } = useAuth();
 
   const addPatient = (patient: Patient) => {
     setPatients((prev) => [patient, ...prev]);
