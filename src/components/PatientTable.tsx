@@ -46,6 +46,9 @@ export const PatientTable = ({ patients, onSelectPatient }: PatientTableProps) =
       case "admittedAt":
         cmp = a.admittedAt.getTime() - b.admittedAt.getTime();
         break;
+      case "doctor":
+        cmp = a.result.doctor.specialization.localeCompare(b.result.doctor.specialization);
+        break;
     }
     return sortAsc ? cmp : -cmp;
   });
