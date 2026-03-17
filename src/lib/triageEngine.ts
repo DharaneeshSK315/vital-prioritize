@@ -149,9 +149,10 @@ export function predictTriage(input: PatientInput): TriageResult {
 
   return {
     priority,
-    riskScore: Math.round(riskScore * 1000) / 10, // percentage with 1 decimal
+    riskScore: Math.round(riskScore * 1000) / 10,
     action,
     reasoning: reasons.length > 0 ? reasons : ["All vitals within normal range"],
+    doctor: recommendDoctor(input.symptoms),
   };
 }
 
