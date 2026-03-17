@@ -17,6 +17,18 @@ const Login = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
 
+  const handleQuickLogin = async (eEmail: string, pPassword: string) => {
+    setLoading(true);
+    try {
+      await login(eEmail, pPassword);
+      navigate("/");
+    } catch (err: any) {
+      toast({ title: "Quick login failed", description: err.message, variant: "destructive" });
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
@@ -92,10 +104,30 @@ const Login = () => {
           </CardFooter>
         </form>
         <div className="px-6 pb-6">
-          <div className="rounded-lg bg-muted p-3 text-xs text-muted-foreground space-y-1">
-            <p className="font-medium text-foreground">Demo Credentials</p>
-            <p>Admin: admin@hospital.com / admin123</p>
-            <p>Doctor: doctor@hospital.com / doctor123</p>
+          <div className="rounded-lg bg-slate-50 border p-4 space-y-3">
+            <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Developer Quick Login</p>
+            <div className="grid grid-cols-2 gap-2">
+              <Button 
+                type="button"
+                variant="outline" 
+                size="sm" 
+                className="text-xs h-8 bg-white border-slate-200 hover:bg-slate-100 hover:text-primary transition-all font-medium"
+                onClick={() => handleQuickLogin("admin@hospital.com", "admin123")}
+                disabled={loading}
+              >
+                Admin
+              </Button>
+              <Button 
+                type="button"
+                variant="outline" 
+                size="sm" 
+                className="text-xs h-8 bg-white border-slate-200 hover:bg-slate-100 hover:text-primary transition-all font-medium"
+                onClick={() => handleQuickLogin("doctor@hospital.com", "doctor123")}
+                disabled={loading}
+              >
+                Doctor
+              </Button>
+            </div>
           </div>
         </div>
       </Card>
