@@ -135,6 +135,17 @@ export const PatientTable = ({ patients, onSelectPatient }: PatientTableProps) =
                   <td className="px-6 py-4">
                     <PriorityBadge level={p.result.priority} pulse />
                   </td>
+                  <td className="px-6 py-4">
+                    <div className="flex items-center gap-2">
+                      <div className="w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                        <Stethoscope className="w-3.5 h-3.5 text-primary" />
+                      </div>
+                      <div>
+                        <div className="text-xs font-semibold text-foreground">{p.result.doctor.specialization}</div>
+                        <div className="text-xs text-muted-foreground">{p.result.doctor.doctorName}</div>
+                      </div>
+                    </div>
+                  </td>
                   <td className="px-6 py-4 text-sm text-muted-foreground">
                     {formatTime(p.admittedAt)}
                   </td>
