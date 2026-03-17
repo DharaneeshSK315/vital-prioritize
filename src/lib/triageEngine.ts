@@ -1,5 +1,6 @@
 // AI Triage Prediction Engine
 // Rule-based classification mimicking a Random Forest model trained on Manchester Triage Scale
+import { recommendDoctor } from "./doctorMapping";
 
 export type PriorityLevel = "Critical" | "High" | "Medium" | "Low";
 
