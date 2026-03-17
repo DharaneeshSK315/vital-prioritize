@@ -85,6 +85,7 @@ export const PatientTable = ({ patients, onSelectPatient }: PatientTableProps) =
                 { field: "name" as SortField, label: "Patient" },
                 { field: "spo2" as SortField, label: "Vitals" },
                 { field: "priority" as SortField, label: "Priority" },
+                { field: "doctor" as SortField, label: "Doctor" },
                 { field: "admittedAt" as SortField, label: "Admitted" },
               ].map(({ field, label }) => (
                 <th
