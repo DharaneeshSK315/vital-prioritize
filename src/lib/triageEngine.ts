@@ -1,5 +1,6 @@
 // AI Triage Prediction Engine
 // Rule-based classification mimicking a Random Forest model trained on Manchester Triage Scale
+import { recommendDoctor } from "./doctorMapping";
 
 export type PriorityLevel = "Critical" | "High" | "Medium" | "Low";
 
@@ -15,11 +16,17 @@ export interface PatientInput {
   symptoms: string;
 }
 
+export interface DoctorRecommendation {
+  specialization: string;
+  doctorName: string;
+}
+
 export interface TriageResult {
   priority: PriorityLevel;
   riskScore: number;
   action: string;
   reasoning: string[];
+  doctor: DoctorRecommendation;
 }
 
 export interface Patient extends PatientInput {
@@ -142,9 +149,10 @@ export function predictTriage(input: PatientInput): TriageResult {
 
   return {
     priority,
-    riskScore: Math.round(riskScore * 1000) / 10, // percentage with 1 decimal
+    riskScore: Math.round(riskScore * 1000) / 10,
     action,
     reasoning: reasons.length > 0 ? reasons : ["All vitals within normal range"],
+    doctor: recommendDoctor(input.symptoms),
   };
 }
 
