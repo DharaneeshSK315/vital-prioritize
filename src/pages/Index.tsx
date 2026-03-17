@@ -1,13 +1,14 @@
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import { type Patient, generateMockPatients } from "@/lib/triageEngine";
 import { StatsCards } from "@/components/StatsCards";
 import { PatientTable } from "@/components/PatientTable";
 import { PatientForm } from "@/components/PatientForm";
 import { PatientDetail } from "@/components/PatientDetail";
 import { CriticalAlerts } from "@/components/CriticalAlerts";
-import { Activity, Plus } from "lucide-react";
+import { Activity, Plus, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
+import { useAuth } from "@/contexts/AuthContext";
+import { Badge } from "@/components/ui/badge";
 const Index = () => {
   const [patients, setPatients] = useState<Patient[]>(() => generateMockPatients());
   const [formOpen, setFormOpen] = useState(false);
