@@ -35,10 +35,19 @@ const Index = () => {
               </p>
             </div>
           </div>
-          <Button onClick={() => setFormOpen(true)} size="sm" className="gap-1.5">
-            <Plus className="w-3.5 h-3.5" />
-            New Admission
-          </Button>
+          <div className="flex items-center gap-3">
+            <div className="hidden sm:flex items-center gap-2 text-sm">
+              <span className="text-muted-foreground">{user?.name}</span>
+              <Badge variant="secondary" className="text-xs">{user?.role}</Badge>
+            </div>
+            <Button onClick={() => setFormOpen(true)} size="sm" className="gap-1.5">
+              <Plus className="w-3.5 h-3.5" />
+              New Admission
+            </Button>
+            <Button onClick={logout} size="sm" variant="ghost" className="gap-1.5 text-muted-foreground">
+              <LogOut className="w-3.5 h-3.5" />
+            </Button>
+          </div>
         </div>
       </header>
 
