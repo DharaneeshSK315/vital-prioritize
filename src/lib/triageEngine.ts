@@ -15,11 +15,17 @@ export interface PatientInput {
   symptoms: string;
 }
 
+export interface DoctorRecommendation {
+  specialization: string;
+  doctorName: string;
+}
+
 export interface TriageResult {
   priority: PriorityLevel;
   riskScore: number;
   action: string;
   reasoning: string[];
+  doctor: DoctorRecommendation;
 }
 
 export interface Patient extends PatientInput {
