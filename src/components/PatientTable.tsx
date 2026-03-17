@@ -16,7 +16,7 @@ const priorityOrder: Record<PriorityLevel, number> = {
   Low: 3,
 };
 
-type SortField = "priority" | "name" | "spo2" | "admittedAt";
+type SortField = "priority" | "name" | "spo2" | "admittedAt" | "doctor";
 
 export const PatientTable = ({ patients, onSelectPatient }: PatientTableProps) => {
   const [sortField, setSortField] = useState<SortField>("priority");
