@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { type Patient, type PriorityLevel } from "@/lib/triageEngine";
 import { PriorityBadge } from "./PriorityBadge";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { ChevronDown, ChevronUp, Stethoscope } from "lucide-react";
 
 interface PatientTableProps {
   patients: Patient[];
