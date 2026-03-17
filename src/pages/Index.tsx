@@ -1,17 +1,19 @@
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import { type Patient, generateMockPatients } from "@/lib/triageEngine";
 import { StatsCards } from "@/components/StatsCards";
 import { PatientTable } from "@/components/PatientTable";
 import { PatientForm } from "@/components/PatientForm";
 import { PatientDetail } from "@/components/PatientDetail";
 import { CriticalAlerts } from "@/components/CriticalAlerts";
-import { Activity, Plus } from "lucide-react";
+import { Activity, Plus, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
+import { useAuth } from "@/contexts/AuthContext";
+import { Badge } from "@/components/ui/badge";
 const Index = () => {
   const [patients, setPatients] = useState<Patient[]>(() => generateMockPatients());
   const [formOpen, setFormOpen] = useState(false);
   const [selectedPatient, setSelectedPatient] = useState<Patient | null>(null);
+  const { user, logout } = useAuth();
 
   const addPatient = (patient: Patient) => {
     setPatients((prev) => [patient, ...prev]);
@@ -33,10 +35,19 @@ const Index = () => {
               </p>
             </div>
           </div>
-          <Button onClick={() => setFormOpen(true)} size="sm" className="gap-1.5">
-            <Plus className="w-3.5 h-3.5" />
-            New Admission
-          </Button>
+          <div className="flex items-center gap-3">
+            <div className="hidden sm:flex items-center gap-2 text-sm">
+              <span className="text-muted-foreground">{user?.name}</span>
+              <Badge variant="secondary" className="text-xs">{user?.role}</Badge>
+            </div>
+            <Button onClick={() => setFormOpen(true)} size="sm" className="gap-1.5">
+              <Plus className="w-3.5 h-3.5" />
+              New Admission
+            </Button>
+            <Button onClick={logout} size="sm" variant="ghost" className="gap-1.5 text-muted-foreground">
+              <LogOut className="w-3.5 h-3.5" />
+            </Button>
+          </div>
         </div>
       </header>
 
