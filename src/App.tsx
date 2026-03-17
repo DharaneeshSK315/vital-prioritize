@@ -17,7 +17,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter basename="/vital-prioritize/">
+      <BrowserRouter basename="/vital-prioritize">
         <AuthProvider>
           <Routes>
             <Route path="/login" element={<Login />} />
