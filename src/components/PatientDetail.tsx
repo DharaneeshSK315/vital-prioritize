@@ -89,6 +89,15 @@ export const PatientDetail = ({ patient, onClose }: PatientDetailProps) => (
               </ul>
             </div>
 
+            {/* Doctor Recommendation */}
+            <div className="rounded-lg border border-border p-3 bg-primary/5">
+              <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-1">
+                Assigned Doctor
+              </p>
+              <p className="text-sm font-semibold">{patient.result.doctor.specialization}</p>
+              <p className="text-xs text-muted-foreground">{patient.result.doctor.doctorName}</p>
+            </div>
+
             {/* Action */}
             <div className="rounded-lg border border-border p-3 bg-muted/30">
               <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-1">
